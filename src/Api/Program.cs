@@ -19,7 +19,10 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
-app.UseSwagger(); 
+app.UseSwagger();
+
+app.MapGet("/", () => "Hello World!")
+        .ExcludeFromDescription();
 
 app.MapGet("/todos", async (TodoDbContext db) => await db.Todos.ToListAsync());
 
